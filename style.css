@@ -1,0 +1,16 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 2em;
+}
+code {
+  font-size: 1em;
+  background: #efefef;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+h2 {
+  color: #308866;
+}
+.section {
+  margin-bottom: 1.5em;
+}

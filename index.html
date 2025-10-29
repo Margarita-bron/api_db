@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Events RESTful API — Документация</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Events RESTful API</h2>
+
+  <div class="section">
+    Управление сущностью событий (events) через стандартизированные HTTP-запросы с защитой по API-ключу.<br>
+  </div>
+
+  <div class="section">
+    <b>1. Получение API-ключа</b><br>
+    - <a href="generate_key.php" target="_blank">Сгенерировать API-ключ</a> и сохранить его.<br>
+    - Ключ необходим для всех запросов к API: <code>X-API-Key: ваш_ключ</code> в заголовках.
+  </div>
+
+  <div class="section">
+    <b>2. Эндпоинты для работы с событиями:</b>
+    <ul>
+      <li><code>GET /events</code> — получить все события</li>
+      <li><code>GET /events/{id}</code>&nbsp;— получить событие по id</li>
+      <li><code>POST /events</code>&nbsp;— создать новое событие<br>
+        <span style="color:#555;">JSON body: {"title":"...", "date":"YYYY-MM-DD HH:MM:SS", "location":"...", "description":"..."}</span>
+      </li>
+      <li><code>PUT /events/{id}</code>&nbsp;— обновить событие<br>
+        <span style="color:#555;">JSON body аналогичен POST</span>
+      </li>
+      <li><code>DELETE /events/{id}</code>&nbsp;— удалить событие</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <b>3. Пример запроса в curl:</b>
+    <pre>
+curl -H "Content-Type: application/json" \
+     -H "X-API-Key: ваш_ключ" \
+     http://localhost/api_db/events
+    </pre>
+  </div>
+
+  <div class="section">
+    <b>4. Коды ответов:</b>
+    <ul>
+      <li><code>200 OK</code> — Успешные запросы</li>
+      <li><code>201 Created</code> — Создание новой записи</li>
+      <li><code>400 Bad Request</code> — Ошибка в параметрах запроса</li>
+      <li><code>401 Unauthorized</code> — Нет или неверный API-ключ</li>
+      <li><code>404 Not Found</code> — Запись не найдена</li>
+      <li><code>500 Internal Server Error</code> — Ошибка на сервере</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <b>5. Протестируйте через Postman/Insomnia:</b><br>
+    <b>Обязательный заголовок:</b> <code>X-API-Key</code><br>
+    <b>Content-Type:</b> <code>application/json</code> для POST/PUT.
+  </div>
+</body>
+</html>
